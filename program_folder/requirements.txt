@@ -1,0 +1,6 @@
+# Pin only the essentials; if you have GPU, install torch per your CUDA:
+# pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+ultralytics>=8.0.0
+opencv-python
+gradio>=4.0.0
+# torch  # (install separately to match your environment/CUDA)

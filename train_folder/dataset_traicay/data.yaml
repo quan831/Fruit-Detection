@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 6
+names: ['Pineapple', 'cherry', 'mango', 'plum', 'tomato', 'watermelon']
+
+roboflow:
+  workspace: hcmus-sbpod
+  project: nhan-dien-trai-cay-v2
+  version: 14
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/hcmus-sbpod/nhan-dien-trai-cay-v2/dataset/14
