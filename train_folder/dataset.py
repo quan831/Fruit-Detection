@@ -1,11 +1,9 @@
 from ultralytics import YOLO
 
-# Load mô hình gốc
-model = YOLO('yolov8n.pt')  # nhẹ, nhanh
+model = YOLO('yolov8n.pt')
 
-# Huấn luyện với dataset trái cây
 model.train(
-    data='dataset_traicay/data.yaml', 
+    data='dataset_fruits/data.yaml', 
     epochs=100,
     patience=20,
     imgsz=640,
