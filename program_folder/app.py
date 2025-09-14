@@ -76,8 +76,8 @@ def detect_on_camera(frame, conf, iou, imgsz, device):
 with gr.Blocks(theme=gr.themes.Soft(), css="footer, .svelte-1ipelgc {display:none !important;}") as demo:
     gr.Markdown(
         """
-        # 🍊 Nhận Diện Trái Cây — YOLOv8
-        Giao diện đẹp, nhanh, hỗ trợ **ảnh** và **camera**. Bạn có thể điều chỉnh ngưỡng tự tin (confidence), IOU và kích thước ảnh suy luận.
+        # 🍊 Fruit Detection — YOLOv8
+        A clean, fast interface supporting **image** and **camera** input. You can adjust confidence, IoU, and inference image size.
         """
     )
 
@@ -85,28 +85,28 @@ with gr.Blocks(theme=gr.themes.Soft(), css="footer, .svelte-1ipelgc {display:non
         with gr.Column(scale=2):
             conf = gr.Slider(0.0, 1.0, value=DEFAULT_CONF, step=0.05, label="Confidence")
             iou  = gr.Slider(0.0, 1.0, value=DEFAULT_IOU, step=0.05, label="IoU")
-            imgsz = gr.Slider(320, 1280, value=DEFAULT_IMGSZ, step=32, label="Kích thước suy luận (imgsz)")
-            device = gr.Radio(choices=[-1, 0], value=DEFAULT_DEVICE_UI, label="Thiết bị (CPU=-1, GPU=0)")
+            imgsz = gr.Slider(320, 1280, value=DEFAULT_IMGSZ, step=32, label="Image size (imgsz)")
+            device = gr.Radio(choices=[-1, 0], value=DEFAULT_DEVICE_UI, label="Device (CPU=-1, GPU=0)")
         with gr.Column(scale=1):
             model_info = gr.Json(
                 value={
                     "using_model": MODEL_PATH,
                     "classes": list(getattr(model, "names", {}).values())
                 },
-                label="Thông tin model"
+                label="Model Information",
             )
 
     with gr.Tabs():
-        with gr.Tab("🖼️  Nhận diện bằng Ảnh"):
+        with gr.Tab("🖼️  Image Detection"):
             with gr.Row():
-                in_img = gr.Image(type="numpy", label="Tải ảnh vào đây", sources=["upload", "clipboard"])
+                in_img = gr.Image(type="numpy", label="Upload Image Here", sources=["upload", "clipboard"])
 
-            btn_run = gr.Button("Phát hiện")
-            
+            btn_run = gr.Button("Detect")
+
             with gr.Row():
-                out_img = gr.Image(label="Kết quả", interactive=False)
-                out_json = gr.Json(label="Kết quả (JSON)", visible=False)
-            return_json = gr.Checkbox(value=False, label="Xuất JSON kết quả")
+                out_img = gr.Image(label="Result", interactive=False)
+                out_json = gr.Json(label="Result (JSON)", visible=False)
+            return_json = gr.Checkbox(value=False, label="Return JSON Result")
 
             btn_run.click(
                 fn=detect_on_image,
@@ -118,14 +118,14 @@ with gr.Blocks(theme=gr.themes.Soft(), css="footer, .svelte-1ipelgc {display:non
                 return gr.update(visible=show)
             return_json.change(_toggle_json, inputs=return_json, outputs=out_json)
 
-        with gr.Tab("📷  Nhận diện bằng Camera (Real-time)"):
+        with gr.Tab("📷  Real-time Camera Detection"):
             cam = gr.Image(
                 sources="webcam",
                 streaming=True,
                 type="numpy",
                 label="Camera"
             )
-            cam_out = gr.Image(label="Kết quả real-time", streaming=True)
+            cam_out = gr.Image(label="Real-time Result", streaming=True)
 
             cam.stream(
                 fn=detect_on_camera,
@@ -134,7 +134,7 @@ with gr.Blocks(theme=gr.themes.Soft(), css="footer, .svelte-1ipelgc {display:non
             )
 
     gr.Markdown(
-        "⚙️ <small>Model: <code>{}</code>. Bạn có thể thay bằng file khác nếu muốn.</small>".format(MODEL_PATH)
+        "⚙️ <small>Model: <code>{}</code>. You can replace it with another file if you want.</small>".format(MODEL_PATH)
     )
 
 if __name__ == "__main__":
