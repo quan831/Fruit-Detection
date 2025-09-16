@@ -1,10 +1,8 @@
 import cv2
 from ultralytics import YOLO
 
-# Tải model đã huấn luyện
 model = YOLO("runs/detect/train/weights/best.pt")
 
-# Mở webcam (nếu bị crash thì thêm CAP_DSHOW)
 cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 
 while True:
@@ -12,10 +10,8 @@ while True:
     if not ret:
         break
 
-    # Nhận diện
     results = model.predict(source=frame, stream=True, conf=0.4)
 
-    # Vẽ khung kết quả
     for r in results:
         for box in r.boxes:
             x1, y1, x2, y2 = map(int, box.xyxy[0])
@@ -23,14 +19,12 @@ while True:
             label = model.names[cls]
             conf = float(box.conf[0])
 
-            # Vẽ box + nhãn
             cv2.rectangle(frame, (x1, y1), (x2, y2), (0,255,0), 2)
             cv2.putText(frame, f"{label} {conf:.2f}", (x1, y1-10),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0,0,255), 2)
 
-    cv2.imshow("Phan loai trai cay", frame)
+    cv2.imshow("Fruits Detection", frame)
 
-    # Nhấn q để thoát
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 

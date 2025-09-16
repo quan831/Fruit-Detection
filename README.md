@@ -1,117 +1,116 @@
 # Fruit Detection Project
 
-## 📌 Giới thiệu
+## 📌 Overview
 
-Dự án này triển khai mô hình **YOLOv8** để phát hiện và phân loại các loại trái cây từ ảnh. Dự án bao gồm:
+This project implements a **YOLOv8** model to detect and classify fruits from images or camera. It provides a full pipeline including:
 
-- **Huấn luyện mô hình** trên tập dữ liệu trái cây thu thập từ Roboflow.
-- **Chạy inference** trực tiếp qua `app.py` (Gradio UI hoặc script).
-- **Đánh giá mô hình** trên tập test để đo lường độ chính xác.
+- **Model Training** - Train YOLOv8 on a fruit dataset collected from Roboflow.
+- **Inference** - Run predictions via `app.py` (using Gradio UI or CLI).
+- **Model Evaluation** - Test and measure accuracy on the provided test set.
 
-## 🗂 Cấu trúc thư mục
+## 🗂 Project Structure
 
 ```bash
-project/
+Fruits-Detection/
 ├── program_folder/
-│   ├── app.py                # Entry point để chạy ứng dụng
-│   └── requirements.txt      # Danh sách thư viện Python
+│   ├── app.py                # Entry point for running the application
+│   └── requirements.txt      # Python dependencies
 │
 ├── train_folder/
-│   ├── dataset.py            # Xử lý dataset, chuẩn bị dữ liệu huấn luyện
-│   ├── evaluate_test.py      # Script đánh giá mô hình
-│   ├── final_cam.py          # Chạy camera để detect realtime
-│   ├── final_img.py          # Chạy detect trên ảnh
-│   ├── yolov8n.pt            # Trọng số mô hình YOLOv8
-│   └── dataset_traicay/      # Dữ liệu huấn luyện và kiểm thử
-│       ├── data.yaml         # Cấu hình dataset cho YOLO
-│       ├── train/            # Ảnh huấn luyện
-│       └── test/             # Ảnh kiểm thử
+│   ├── dataset.py            # Dataset preprocessing and preparation
+│   ├── evaluate_test.py      # Model evaluation script
+│   ├── final_cam.py          # Real-time detection using webcam
+│   ├── final_img.py          # Run detection on images
+│   ├── yolov8n.pt            # Pretrained YOLOv8 model weights
+│   └── dataset_fruits/       # Training & test dataset
+│       ├── data.yaml         # YOLO dataset configuration file
+│       ├── train/            # Training images
+│       └── test/             # Testing images
 ```
 
-## ⚙️ Cài đặt
+## ⚙️ Installation
 
-### Cài đặt trong môi trường ảo (tuỳ chọn)
+### Install in Virtual Environment (Optional)
 
-1. **Tạo môi trường ảo (khuyến nghị)**
+1. **Create a Virtual Environment (Recommend)**
 
 ```bash
 python -m venv venv
-source venv/bin/activate  # Trên Linux/Mac
-venv\Scripts\activate     # Trên Windows
+source venv/bin/activate  # On Linux/Mac
+venv\Scripts\activate     # On Windows
 ```
 
-2. **Cài đặt thư viện cần thiết**
+2. **Install Dependencies**
 
 ```bash
 pip install -r program_folder/requirements.txt
 ```
 
-### Cài đặt và chạy trên Spyder
+### Installation and Running on Spyder
 
-1. Mở **Anaconda Navigator** → cài đặt hoặc mở **Spyder IDE**.
-2. Chọn kernel / environment mà bạn muốn sử dụng.
-3. Đảm bảo cài đủ thư viện trong environment hiện tại:
+1. Open **Anaconda Navigator** → install or launch **Spyder IDE**.
+2. Select the kernel/environment you want to use.
+3. Make sure all dependencies are installed in the current environment:
 
 ```bash
 pip install -r program_folder/requirements.txt
 ```
 
-4. Mở file `app.py` trong Spyder và nhấn **Run** để khởi động giao diện.
-5. Có thể mở `final_img.py`, `final_cam.py` hoặc `evaluate_test.py` và chạy trực tiếp trên Spyder để test ảnh, realtime hoặc đánh giá mô hình.
+4. Open the `app.py` file in Spyder and click **Run** to start the UI.
+5. You can also open `final_img.py`, `final_cam.py` or `evaluate_test.py` and run them directly in Spyder to test images, run real-time detection, or evaluate the model.
 
-## 🚀 Cách chạy nhanh
+## 🚀 Quick Start
 
-### Chạy ứng dụng giao diện (Gradio UI)
+### Run the Application (Gradio UI)
 
 ```bash
 python program_folder/app.py
 ```
 
-Ứng dụng sẽ mở trên trình duyệt.
+The application will open in your browser.
 
-### Chạy detect trên ảnh
+### Run Detection on an Image
 
 ```bash
 python train_folder/final_img.py --source path/to/image.jpg
 ```
 
-### Chạy detect realtime bằng webcam
+### Run Real-time Detection with Webcam
 
 ```bash
 python train_folder/final_cam.py
 ```
 
-### Đánh giá mô hình
+### Evaluate the Model
 
 ```bash
 python train_folder/evaluate_test.py
 ```
 
-## 🧠 Mô hình
+## 🧠 Model
 
-- Sử dụng **YOLOv8n** (phiên bản nhẹ, tối ưu cho tốc độ).
-- Dữ liệu được cấu hình theo chuẩn YOLO trong `data.yaml`.
-- Có thể huấn luyện lại bằng cách chạy `dataset.py` để chuẩn bị dữ liệu và `yolo train` để huấn luyện.
+- Uses **YOLOv8n** (lightweight version optimized for speed).
+- Dataset is configured in YOLO format via `data.yaml`.
+- You can retrain the model by running `dataset.py` to prepare data and using `yolo train` to start training.
 
-## 📊 Kết quả mong đợi
+## 📊 Expected Results
 
-- Mô hình có thể phát hiện nhiều loại trái cây trong cùng một ảnh.
-- Độ chính xác phụ thuộc chất lượng tập dữ liệu.
+- The model can detect multiple types of fruits in a single image.
+- Accuracy depends on the quality of the dataset.
 
-## 📄 Ghi chú
+## 📄 Notes
 
-- Nếu muốn huấn luyện lại mô hình, đảm bảo cài **ultralytics**:
+- To retrain the model, ensure **ultralytics** is installed:
 
 ```bash
 pip install ultralytics
 ```
 
-- Có thể chỉnh tham số trong `data.yaml` hoặc script huấn luyện để tăng/giảm epoch.
+- You can adjust parameters in `data.yaml` or the training script to increase/decrease the number of epochs.
 
-## 👤 Tác giả
+## 👤 Authors
 
 - **Nguyễn Minh Quân**
 - **Hoàng Quốc Khánh**
 - **Lê Hoàng Lan**
 - **Triệu Yến Vi**
-
