@@ -2,32 +2,32 @@
 
 ## Supported Versions
 
-Chúng tôi hỗ trợ các phiên bản sau với các bản vá bảo mật:
+We provide security patches for the following versions:
 
 | Version | Supported          |
 |-------- | ------------------ |
 | 1.x.x  | :white_check_mark: |
 | < 1.0  | :x:                |
 
-> Phiên bản 1.x.x là bản phát hành ổn định và sẽ nhận các bản vá bảo mật khi cần thiết.  
-> Các phiên bản cũ hơn (< 1.0) sẽ không được hỗ trợ nữa.
+> Version 1.x.x is the stable release and will receive security patches when necessary.  
+> Older versions (< 1.0) are no longer supported.
 
 ## Reporting a Vulnerability
 
-Nếu bạn phát hiện ra một lỗ hổng bảo mật, vui lòng thực hiện theo quy trình sau:
+If you discover a security vulnerability, please follow this process:
 
-1. **Không tạo issue công khai** để tránh rò rỉ thông tin bảo mật.
-2. Gửi báo cáo bảo mật qua email: **nguyenminhquan831@gmail.com**  
-   (hoặc dùng [GitHub Security Advisories](https://docs.github.com/en/code-security/security-advisories) để gửi báo cáo riêng tư).
-3. Nội dung báo cáo nên bao gồm:
-   - Các bước tái hiện vấn đề
-   - Ảnh hưởng đến hệ thống/dữ liệu
-   - Đề xuất bản vá (nếu có)
-4. Bạn sẽ nhận được phản hồi trong vòng **48 giờ**.
-5. Nếu được xác nhận là lỗ hổng bảo mật, chúng tôi sẽ vá lỗi và phát hành bản vá trong bản phát hành bảo mật tiếp theo.
+1. **Do not create a public issue** to avoid exposing sensitive information.
+2. Send a security report via email: **nguyenminhquan831@gmail.com**  
+   (or use [GitHub Security Advisories](https://docs.github.com/en/code-security/security-advisories) to submit a private report).
+3. Your report should include:
+   - Steps to reproduce the issue
+   - Potential impact on the system/data
+   - Suggested fix or patch (if available)
+4. You will receive a response within **48 hours**.
+5. If confirmed as a security vulnerability, we will patch the issue and release a fix in the next security release.
 
 ---
 
-**Trạng thái dự án:**  
-✅ **Ổn định** – Sẵn sàng cho production.  
-🔒 Chính sách bảo mật được áp dụng cho tất cả bản phát hành 1.x.x trở về sau.
+**Project Status:**  
+✅ **Stable** – Production-ready.  
+🔒 Security policy applies to all releases from version 1.x.x onward.
