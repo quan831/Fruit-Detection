@@ -15,7 +15,7 @@
 | **Total** | **2,618** | **2,618** |
 
 The dataset has been **reorganized** into three subsets (`train`, `valid`, `test`) for YOLOv8 format training and evaluation.  
-No images were added or removed — only split restructuring.
+No images were added or removed - only split restructuring.
 
 ---
 
