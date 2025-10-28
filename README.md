@@ -13,19 +13,22 @@ This project implements a **YOLOv8** model to detect and classify fruits from im
 ```bash
 Fruits-Detection/
 ├── program_folder/
-│   ├── app.py                # Entry point for running the application
-│   └── requirements.txt      # Python dependencies
+│   ├── app.py                   # Entry point for running the application
+│   └── requirements.txt         # Python dependencies
 │
 ├── train_folder/
-│   ├── dataset.py            # Dataset preprocessing and preparation
-│   ├── evaluate_test.py      # Model evaluation script
-│   ├── final_cam.py          # Real-time detection using webcam
-│   ├── final_img.py          # Run detection on images
-│   ├── yolov8n.pt            # Pretrained YOLOv8 model weights
-│   └── dataset_fruits/       # Training & test dataset
-│       ├── data.yaml         # YOLO dataset configuration file
-│       ├── train/            # Training images
-│       └── test/             # Testing images
+│   ├── dataset.py               # Dataset preprocessing and preparation
+│   ├── evaluate_test.py         # Model evaluation script
+│   ├── final_cam.py             # Real-time detection using webcam
+│   ├── final_img.py             # Run detection on images
+│   ├── yolov8n.pt               # Pretrained YOLOv8 model weights
+│   └── dataset_fruits/          # Training & test dataset
+│       ├── data.yaml            # YOLO dataset configuration file
+│       ├── train/               # Training images
+│       ├── valid/               # Validating images
+│       ├── test/                # Testing images
+│       ├── README.dataset.md    # Documentation for the modified dataset (license, structure, attribution)
+│       └── README.roboflow.txt  # Original Roboflow export metadata (source information)
 ```
 
 ## ⚙️ Installation
