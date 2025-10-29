@@ -21,7 +21,6 @@ Fruits-Detection/
 │   ├── evaluate_test.py         # Model evaluation script
 │   ├── final_cam.py             # Real-time detection using webcam
 │   ├── final_img.py             # Run detection on images
-│   ├── yolov8n.pt               # Pretrained YOLOv8 model weights
 │   └── dataset_fruits/          # Training & test dataset
 │       ├── data.yaml            # YOLO dataset configuration file
 │       ├── train/               # Training images
