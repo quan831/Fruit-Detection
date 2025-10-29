@@ -23,9 +23,6 @@ Fruits-Detection/
 │   ├── final_img.py             # Run detection on images
 │   └── dataset_fruits/          # Training & test dataset
 │       ├── data.yaml            # YOLO dataset configuration file
-│       ├── train/               # Training images
-│       ├── valid/               # Validating images
-│       ├── test/                # Testing images
 │       ├── README.dataset.md    # Documentation for the modified dataset (license, structure, attribution)
 │       └── README.roboflow.txt  # Original Roboflow export metadata (source information)
 ```
