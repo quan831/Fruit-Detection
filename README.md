@@ -1,115 +1,136 @@
-# Fruit Detection Project
+# 🍎 Fruit Detection (YOLOv8)
 
-## 📌 Overview
+> Real-time fruit detection powered by **YOLOv8**, using a custom fruit dataset split into train/val/test.  
+> Built for quick deployment and clean reproducibility.
 
-This project implements a **YOLOv8** model to detect and classify fruits from images or camera. It provides a full pipeline including:
+---
 
-- **Model Training** - Train YOLOv8 on a fruit dataset collected from Roboflow.
-- **Inference** - Run predictions via `app.py` (using Gradio UI or CLI).
-- **Model Evaluation** - Test and measure accuracy on the provided test set.
+## 🚀 Features
+- 🧠 **YOLOv8n** model trained on a custom fruit dataset from **Roboflow**  
+- 🧩 **Custom Split:** dataset manually divided into **train**, **val**, and **test** sets  
+- 🎯 **Pretrained Weights:** runs directly using `best.pt` without retraining  
+- 💻 **Simple Interface:** just run one Python file - no complex setup needed  
+
+---
+
+## 🍉 Dataset Overview
+
+The dataset contains **6 fruit classes** used for object detection:
+
+| Class | Description |
+|:------|:-------------|
+| 🍍 **Pineapple** | Tropical fruit with spiky skin and sweet yellow flesh. |
+| 🍒 **Cherry** | Small red fruit often appearing in pairs. |
+| 🥭 **Mango** | Yellow-orange fruit with smooth skin and sweet aroma. |
+| 🍑 **Plum** | Round fruit with smooth skin, purple or red when ripe. |
+| 🍅 **Tomato** | Red juicy fruit often mistaken for a vegetable. |
+| 🍉 **Watermelon** | Large green fruit with red interior and black seeds. |
+
+---
 
 ## 🗂 Project Structure
-
 ```bash
 Fruits-Detection/
-├── program_folder/
-│   ├── app.py                   # Entry point for running the application
-│   └── requirements.txt         # Python dependencies
+├── program.py               # Main entry point for running detection
+├── requirements.txt         # Python dependencies
+├── LICENSE
+├── SECURITY.md
 │
-├── train_folder/
-│   ├── dataset.py               # Dataset preprocessing and preparation
-│   ├── evaluate_test.py         # Model evaluation script
-│   ├── final_cam.py             # Real-time detection using webcam
-│   ├── final_img.py             # Run detection on images
-│   └── dataset_fruits/          # Training & test dataset
-│       ├── data.yaml            # YOLO dataset configuration file
-│       ├── README.dataset.md    # Documentation for the modified dataset (license, structure, attribution)
-│       └── README.roboflow.txt  # Original Roboflow export metadata (source information)
+├── weights/
+│   ├── best.pt              # Trained YOLOv8 model weights
+│   └── last.pt
+│
+└── dataset_fruits/
+    ├── data.yaml            # Dataset configuration for YOLOv8
+    ├── README.dataset.md    # Info on dataset source & how val set was created
+    ├── README.roboflow.txt  # Original Roboflow export metadata (source information)
+    ├── train/               # Training images & labels
+    ├── valid/               # Validation images & labels
+    └── test/                # Test images & labels
 ```
+
+---
 
 ## ⚙️ Installation
 
-### Install in Virtual Environment (Optional)
+### 1️⃣ Clone the repository
+```bash
+git clone https://github.com/quan831/Fruit-Detection.git
+cd Fruit-Detection
+```
 
-1. **Create a Virtual Environment (Recommend)**
-
+### 2️⃣ (Optional) Create virtual environment
 ```bash
 python -m venv venv
-source venv/bin/activate  # On Linux/Mac
-venv\Scripts\activate     # On Windows
+# Activate:
+# Windows
+venv\Scripts\activate
+# macOS / Linux
+source venv/bin/activate
 ```
 
-2. **Install Dependencies**
-
+### 3️⃣ Install dependencies
 ```bash
-pip install -r program_folder/requirements.txt
+pip install -r requirements.txt
 ```
 
-### Installation and Running on Spyder
+---
 
-1. Open **Anaconda Navigator** → install or launch **Spyder IDE**.
-2. Select the kernel/environment you want to use.
-3. Make sure all dependencies are installed in the current environment:
+## ▶️ Run Detection
 
+### 🧩 Option 1 — Detect via Script
 ```bash
-pip install -r program_folder/requirements.txt
+python program.py
 ```
 
-4. Open the `app.py` file in Spyder and click **Run** to start the UI.
-5. You can also open `final_img.py`, `final_cam.py` or `evaluate_test.py` and run them directly in Spyder to test images, run real-time detection, or evaluate the model.
+Make sure your working directory includes:
+- `weights/best.pt`
+- `dataset_fruits/data.yaml`
 
-## 🚀 Quick Start
+The program loads the YOLOv8 model and runs inference directly.
 
-### Run the Application (Gradio UI)
+### 🧠 Option 2 — Run in Spyder (Recommended for GUI)
+1. Open **Anaconda Navigator** → Launch **Spyder**  
+2. Open `program.py`  
+3. Hit **Run (F5)** to start detection  
+4. Check outputs and logs inside the console or generated output folder (if any)
 
-```bash
-python program_folder/app.py
-```
+---
 
-The application will open in your browser.
+## 🧠 Model Details
+- **Model:** `best.pt` (trained YOLOv8n)  
+- **Framework:** Ultralytics YOLOv8 (Python)  
+- **Dataset:** Custom split version of Roboflow fruit dataset  
+- **Train/Val/Test Ratio:** defined manually in `README.dataset.md`  
 
-### Run Detection on an Image
+---
 
-```bash
-python train_folder/final_img.py --source path/to/image.jpg
-```
+## 🧾 License
+This project is licensed under the [MIT License](./LICENSE).
 
-### Run Real-time Detection with Webcam
+---
 
-```bash
-python train_folder/final_cam.py
-```
+## 🛡 Security
+See [SECURITY.md](./SECURITY.md) for details on responsible disclosure.
 
-### Evaluate the Model
+---
 
-```bash
-python train_folder/evaluate_test.py
-```
+## 💖 Credits
+- [Ultralytics YOLOv8](https://github.com/ultralytics/ultralytics)  
+- [Roboflow](https://roboflow.com) for dataset hosting  
+- **Original dataset:** [nhận diện trái cây v2 Computer Vision Dataset](https://universe.roboflow.com/hcmus-sbpod/nhan-dien-trai-cay-v2)
+- Custom dataset split and model tuning by **Quan (James)**
 
-## 🧠 Model
+---
 
-- Uses **YOLOv8n** (lightweight version optimized for speed).
-- Dataset is configured in YOLO format via `data.yaml`.
-- You can retrain the model by running `dataset.py` to prepare data and using `yolo train` to start training.
+## 🌟 Show Your Support
+If this repo helps you, please give it a ⭐ on GitHub - it really motivates me!
 
-## 📊 Expected Results
-
-- The model can detect multiple types of fruits in a single image.
-- Accuracy depends on the quality of the dataset.
-
-## 📄 Notes
-
-- To retrain the model, ensure **ultralytics** is installed:
-
-```bash
-pip install ultralytics
-```
-
-- You can adjust parameters in `data.yaml` or the training script to increase/decrease the number of epochs.
+---
 
 ## 👤 Authors
 
-- **Nguyễn Minh Quân**
+- **Nguyễn Minh Quân (Leader)**
 - **Hoàng Quốc Khánh**
 - **Lê Hoàng Lan**
 - **Triệu Yến Vi**
